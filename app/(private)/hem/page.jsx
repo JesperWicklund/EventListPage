@@ -4,7 +4,7 @@ import Eventlist from "@/app/components/event-list";
 function EventPage() {
 
 
-  //fetch events 
+
 
 
   return (

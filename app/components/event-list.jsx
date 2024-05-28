@@ -1,16 +1,44 @@
-import React from 'react'
-import axios from 'axios'
-export default function Eventlist() {
+'use client'
 
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import EventCard from './eventcard';
 
+export default function EventList() {
+  const [data, setData] = useState(null);
+  const [error, setError] = useState(null);
 
+  async function fetchData() {
+    try {
+      const response = await axios.get('http://localhost:3000/api/event');
+      setData(response.data);
+    } catch (error) {
+      setError(error);
+      console.error('Error fetching data:', error);
+    }
+  }
+
+  useEffect(() => {
+    fetchData();
+  }, []); // Empty dependency array ensures this runs only once when the component mounts
+
+  if (error) {
+    return <div>Error fetching data: {error.message}</div>;
+  }
+
+  if (!data) {
+    return <div className='flex items-center justify-center text-2xl'>Loading...</div>;
+  }
 
   return (
-    <div className='flex items-center justify-center'>
-        <div>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo dolorum, reprehenderit perspiciatis reiciendis id suscipit quaerat quas, molestiae consectetur sapiente tenetur quae ducimus laborum, praesentium eos ad quasi ratione nulla? Quo libero dolorum animi ea maiores minima, aperiam voluptatibus magnam nisi illo blanditiis accusantium impedit harum quisquam aliquam? Expedita fugit ea labore at aperiam omnis ad architecto a rem. Dolore et est eos consequuntur similique vero corporis velit ullam, porro eaque aperiam nostrum expedita! Asperiores numquam vero voluptate similique provident. Reprehenderit fugit harum, non odio illo doloribus deleniti hic totam exercitationem quidem dolore, quisquam vel magni possimus officiis voluptate laboriosam.</p>
-        </div>
-
+    <div className="flex items-center justify-center ">
+      <div>
+        {data.map(event => (
+          <div key={event.id}>
+            <EventCard  event={event}></EventCard>
+          </div>
+        ))}
+      </div>
     </div>
-  )
+  );
 }
