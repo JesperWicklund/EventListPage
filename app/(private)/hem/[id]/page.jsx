@@ -105,7 +105,7 @@ function DetailPage() {
                   {event?.attendees.length} / {event?.seats}
                 </p>
               </div>
-              <div>
+              <div className="flex flex-col">
                 <button
                   onClick={handleBooking}
                   className={`bg-slate-800 p-2 rounded-sm hover:bg-slate-700 ${isBooked ? 'cursor-not-allowed opacity-50' : ''}`}
@@ -113,6 +113,7 @@ function DetailPage() {
                 >
                   {isBooked ? "Bokad" : "Boka Nu"}
                 </button>
+                <p className="text-sm">{isBooked ? 'Gå till min sida för att avboka' : ''}</p>
               </div>
             </div>
             {message && (
