@@ -64,15 +64,14 @@ function DetailPage() {
             user.primaryEmailAddress.emailAddress,
           ],
         }));
-        setMessage('Gå till "Min Sida"');
+        
         setIsBooked(true); // Set isBooked to true after successful booking
       } catch (error) {
         setMessage("Failed to book event. Please try again.");
       }
-    } else if (isBooked) {
-      setMessage("You have already booked this event.");
-    } else {
+    }  else {
       setMessage("The event is full.");
+      setTimeout(() => setMessage(""), 3000);
     }
   };
 
@@ -117,7 +116,7 @@ function DetailPage() {
               </div>
             </div>
             {message && (
-              <div className={`mt-4 ${message.startsWith("Failed") ? "text-red-500" : "text-green-500"}`}>
+              <div className={`mt-4 text-red-500`}>
                 {message}
               </div>
             )}

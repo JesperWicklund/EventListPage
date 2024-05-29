@@ -27,7 +27,7 @@ export default function EventCard({ event }) {
             <div className="flex items-center gap-4 ml-2">
               <Unicons.UilTicket></Unicons.UilTicket>
               <p>
-                {event.attendees.length}/{event.seats}{" "}
+                {event.attendees.length}/{event.seats}
               </p>
             </div>
             <div>

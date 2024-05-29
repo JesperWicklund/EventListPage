@@ -31,8 +31,8 @@ export default function EventList() {
   }
 
   return (
-    <div className="flex items-center justify-center ">
-      <div>
+    <div className="flex items-center justify-center  ">
+      <div className=''>
         {data.map(event => (
           <div key={event.id}>
             <EventCard  event={event}></EventCard>
