@@ -9,7 +9,7 @@ function EventPage() {
 
   return (
     <div className="flex flex-col items-center justify-center mt-8">
-      <h1 className="text-4xl font-semibold ">Event List:</h1>
+      <h1 className="text-4xl font-semibold ">Event Lista:</h1>
       <div className="w-4/5">
         <Eventlist></Eventlist>
       </div>
