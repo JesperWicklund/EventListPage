@@ -1,14 +1,17 @@
-import React from 'react'
-import Header from '../components/header'
-import { UserButton } from '@clerk/nextjs'
+import React from "react";
+import Header from "../components/header";
+import { UserButton } from "@clerk/nextjs";
 
-function layout({children}) {
+function layout({ children }) {
   return (
     <div>
-        <Header></Header>
-        <UserButton></UserButton> 
-        {children}</div>
-  )
+      <Header></Header>
+      <div className="p-4">
+        <UserButton></UserButton>
+      </div>
+      {children}
+    </div>
+  );
 }
 
-export default layout
+export default layout;
